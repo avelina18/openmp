@@ -32,8 +32,8 @@
 #include <stdio.h>
 #include <sys/time.h>
  
-#define m 1000
-#define n 1000
+#define m 500
+#define n 500
 
 int main()
 {
