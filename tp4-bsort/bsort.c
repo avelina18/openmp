@@ -47,10 +47,12 @@ int main(int argc, char *argv[])
     T[i]=rand();
   /* call the bubble sort */ 
   bsort(T,n);
-
-  printf("Sorted list in ascending order:\n"); 
-  for (i = 0; i < n; i++)
-     printf("%d\n", T[i]);
+  if (n < 20)
+  {
+    printf("Sorted list in ascending order:\n"); 
+    for (i = 0; i < n; i++)
+       printf("%d\n", T[i]);
+  }
   free(T); 
   return 0;
 }
