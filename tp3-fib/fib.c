@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <omp.h>
 
 int fib_rec(int n)
 {
