@@ -1,6 +1,6 @@
 # Makefile 
 
-OPTOMP = # a renseigner 
+OPTOMP = -fopenmp
 OPTSEQ = 
 EXELIST = fib fibseq
 CC = gcc
