@@ -1,6 +1,6 @@
 # Makefile 
 
-OPTOMP = # a renseigner 
+OPTOMP = -fopenmp # a renseigner 
 OPTSEQ = 
 EXELIST = bsort bsortseq
 CC = gcc

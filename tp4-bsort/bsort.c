@@ -25,6 +25,41 @@ void bsort(int *T,int n)
     }
   }
 }
+
+/* function bsort 
+ * input: T array of integer
+ *         n size of T
+ * output: T sorted (with the bubble sort method) */
+void bsort_omp(int *T,int n)
+{
+  int i,j,swap;
+  /* loop over the tab T*/
+  for (i = 0 ; i < n - 1; i++)
+  {
+    /* even bubles rise */
+    #pragma omp parallel for private(j,swap)
+    for (j = 0 ; j < n - 1; j+=2)
+    {
+      if (T[j] > T[j+1]) 
+      {
+        swap   = T[j];
+        T[j]   = T[j+1];
+        T[j+1] = swap;
+      }
+    }
+    /* odd bubles rise */
+    #pragma omp parallel for private(j,swap)
+    for (j = 1 ; j < n - 1; j+=2)
+    {
+      if (T[j] > T[j+1]) 
+      {
+        swap   = T[j];
+        T[j]   = T[j+1];
+        T[j+1] = swap;
+      }
+    }
+  }
+}
  
 int main(int argc, char *argv[])
 {
@@ -41,12 +76,11 @@ int main(int argc, char *argv[])
     scanf("%d", &n);
   }
   T = malloc(n*sizeof(int));
-  printf("Enter %d integers\n", n);
   /* we build T randomly */
   for (i = 0; i < n; i++)
     T[i]=rand();
   /* call the bubble sort */ 
-  bsort(T,n);
+  bsort_omp(T,n);
   if (n < 20)
   {
     printf("Sorted list in ascending order:\n"); 
